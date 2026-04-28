@@ -11,16 +11,14 @@
     </style>
 </head>
 <body>
-    <div id="player" style="width:100%; height:100%;"></div>
+    <div id="player" style="width:100%; height:100vh;"></div>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const imdbId = urlParams.get('imdb');
         if (imdbId) {
-            // vidsrc.me é o servidor mais compatível com o GitHub Pages
+            // vidsrc.cc é excelente para evitar telas pretas
             document.getElementById('player').innerHTML = 
-                `<iframe src="https://vidsrc.me/embed/movie?imdb=${imdbId}" allowfullscreen></iframe>`;
-        } else {
-            document.getElementById('player').innerHTML = '<h2 style="color:white;text-align:center">Selecione um filme no Bot.</h2>';
+                `<iframe src="https://vidsrc.cc/v2/embed/movie/${imdbId}" allowfullscreen></iframe>`;
         }
     </script>
 </body>
