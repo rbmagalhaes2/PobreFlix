@@ -11,14 +11,16 @@
     </style>
 </head>
 <body>
-    <div id="player" style="width: 100%; height: 100vh;"></div>
+    <div id="player" style="width:100%; height:100%;"></div>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const imdbId = urlParams.get('imdb');
         if (imdbId) {
-            // Este player é o que costuma funcionar com o prefixo 'play' que você mencionou
+            // vidsrc.me é o servidor mais compatível com o GitHub Pages
             document.getElementById('player').innerHTML = 
                 `<iframe src="https://vidsrc.me/embed/movie?imdb=${imdbId}" allowfullscreen></iframe>`;
+        } else {
+            document.getElementById('player').innerHTML = '<h2 style="color:white;text-align:center">Selecione um filme no Bot.</h2>';
         }
     </script>
 </body>
