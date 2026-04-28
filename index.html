@@ -16,9 +16,9 @@
         const urlParams = new URLSearchParams(window.location.search);
         const imdbId = urlParams.get('imdb');
         if (imdbId) {
-            // vidsrc.cc é excelente para evitar telas pretas
+            // Usando o servidor que você descobriu que funciona!
             document.getElementById('player').innerHTML = 
-                `<iframe src="https://vidsrc.cc/v2/embed/movie/${imdbId}" allowfullscreen></iframe>`;
+                `<iframe src="https://streamimdb.ru/embed/movie/${imdbId}" allowfullscreen frameborder="0"></iframe>`;
         }
     </script>
 </body>
