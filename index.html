@@ -2,30 +2,22 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PobreFlix Player</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #000; overflow: hidden; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
         iframe { border: none; width: 100vw; height: 100vh; }
     </style>
 </head>
 <body>
     <div id="player"></div>
-
     <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand(); 
-
         const urlParams = new URLSearchParams(window.location.search);
-        const imdbId = urlParams.get('imdb'); // O bot vai enviar ?imdb=tt...
-
+        const imdbId = urlParams.get('imdb');
         if (imdbId) {
-            // Conforme a API da Vidapi, o embed por IMDb segue este padrão:
+            // Player alternativo mais estável
             document.getElementById('player').innerHTML = 
-                `<iframe src="https://vidapi.ru/embed/imdb/${imdbId}" allowfullscreen></iframe>`;
-        } else {
-            document.body.innerHTML = "<h2 style='color:white; text-align:center; margin-top:20%;'>Nenhum filme selecionado.</h2>";
+                `<iframe src="https://vidsrc.to/embed/movie/${imdbId}" allowfullscreen></iframe>`;
         }
     </script>
 </body>
