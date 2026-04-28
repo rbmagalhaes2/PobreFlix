@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="no-referrer"> <title>PobreFlix Player</title>
+    <meta name="referrer" content="no-referrer">
+    <title>PobreFlix Player</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; }
         iframe { border: none; width: 100%; height: 100%; }
+        .loading { color: yellow; font-family: sans-serif; position: absolute; z-index: -1; }
     </style>
 </head>
 <body>
-    <div id="player"></div>
+    <div class="loading">Carregando filme...</div>
+    <div id="player" style="width:100%; height:100%;"></div>
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const imdbId = urlParams.get('imdb');
+        
         if (imdbId) {
-            // Player vidsrc.me é o mais estável atualmente
+            // O servidor vidsrc.pro é o que o "play" do IMDb costuma usar
+            const playerUrl = `https://vidsrc.pro/embed/movie/${imdbId}`;
             document.getElementById('player').innerHTML = 
-                `<iframe src="https://vidsrc.me/embed/movie?imdb=${imdbId}" allowfullscreen></iframe>`;
+                `<iframe src="${playerUrl}" allowfullscreen referrerpolicy="no-referrer"></iframe>`;
+        } else {
+            document.getElementById('player').innerHTML = '<div style="color:white">Nenhum filme selecionado.</div>';
         }
     </script>
 </body>
