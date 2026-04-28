@@ -11,14 +11,14 @@
     </style>
 </head>
 <body>
-    <div id="player"></div>
+    <div id="player" style="width: 100%; height: 100vh;"></div>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const imdbId = urlParams.get('imdb');
         if (imdbId) {
-            // Player otimizado para evitar bloqueios de Referrer
+            // Este player é o que costuma funcionar com o prefixo 'play' que você mencionou
             document.getElementById('player').innerHTML = 
-                `<iframe src="https://vidsrc.xyz/embed/movie?imdb=${imdbId}" allowfullscreen></iframe>`;
+                `<iframe src="https://vidsrc.me/embed/movie?imdb=${imdbId}" allowfullscreen></iframe>`;
         }
     </script>
 </body>
