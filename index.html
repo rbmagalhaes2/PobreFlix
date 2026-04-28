@@ -16,7 +16,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const imdbId = urlParams.get('imdb');
         if (imdbId) {
-            // Usando o servidor que você descobriu que funciona!
+            // Servidor que você confirmou que roda o Michael tt11378946
             document.getElementById('player').innerHTML = 
                 `<iframe src="https://streamimdb.ru/embed/movie/${imdbId}" allowfullscreen frameborder="0"></iframe>`;
         }
