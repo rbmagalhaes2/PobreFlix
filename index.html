@@ -6,26 +6,19 @@
     <meta name="referrer" content="no-referrer">
     <title>PobreFlix Player</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
         iframe { border: none; width: 100%; height: 100%; }
-        .loading { color: yellow; font-family: sans-serif; position: absolute; z-index: -1; }
     </style>
 </head>
 <body>
-    <div class="loading">Carregando filme...</div>
-    <div id="player" style="width:100%; height:100%;"></div>
-
+    <div id="player"></div>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const imdbId = urlParams.get('imdb');
-        
         if (imdbId) {
-            // O servidor vidsrc.pro é o que o "play" do IMDb costuma usar
-            const playerUrl = `https://vidsrc.pro/embed/movie/${imdbId}`;
+            // Player otimizado para evitar bloqueios de Referrer
             document.getElementById('player').innerHTML = 
-                `<iframe src="${playerUrl}" allowfullscreen referrerpolicy="no-referrer"></iframe>`;
-        } else {
-            document.getElementById('player').innerHTML = '<div style="color:white">Nenhum filme selecionado.</div>';
+                `<iframe src="https://vidsrc.xyz/embed/movie?imdb=${imdbId}" allowfullscreen></iframe>`;
         }
     </script>
 </body>
